@@ -1,6 +1,7 @@
 import React from 'react';
 import Board from './Board';
-import generateBoard from '../lib/generate-board';
+import GameBoard from '../lib/GameBoard';
+import detonator from '../lib/detonator';
 
 export default class Game extends React.Component {
   constructor(props) {
@@ -16,7 +17,7 @@ export default class Game extends React.Component {
     const { props } = this;
 
     return {
-      board: generateBoard(props.height, props.width, props.density),
+      board: new GameBoard(props.height, props.width, props.density),
       selectedCells: [],
       flaggedCells: [],
       exploded: [],
@@ -25,6 +26,7 @@ export default class Game extends React.Component {
     };
   }
 
+  // @TODO Ensure first click is a zero
   clickCell(e, cell) {
     e.preventDefault();
 
@@ -37,7 +39,7 @@ export default class Game extends React.Component {
     if (cell.isMine) {
       this.detonate(cell);
     } else if (this.state.selectedCells.indexOf(cell) === -1) {
-      this.startChainReaction(cell);
+      this.clearCells(cell);
     }
   }
 
@@ -68,15 +70,32 @@ export default class Game extends React.Component {
     this.setState({
       exploded: [cell],
     });
+
+    const board = this.state.board;
+    const explode = (mine) => {
+      this.setState({
+        exploded: [
+          ...this.state.exploded,
+          mine
+        ]
+      });
+    }
+
+    this.detonator = new detonator(board.mines);
+    this.detonator.start(explode);
   }
 
-  startChainReaction(cell) {
+  componentWillUnmount() {
+    this.detonator.stop();
+  }
+
+  clearCells(cell) {
     const board = this.state.board;
     const newVisible = [
       ...this.state.selectedCells,
       cell
     ];
-    const chainedCells = board.startChainReaction([cell], newVisible);
+    const chainedCells = board.fetchChainedCells([cell], newVisible);
 
     this.setState({
       selectedCells: chainedCells

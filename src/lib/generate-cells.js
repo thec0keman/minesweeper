@@ -1,16 +1,11 @@
-import GameBoard from './GameBoard';
 import GameCell from './GameCell';
 
-export default function(height, width, density) {
-  const board = new GameBoard(height, width, density);
-
-  generateMines(board);
-
-  return board;
-}
-
+// @TODO Ensure that you cannot have any impossible cells
+// @TODO Ensure that you cannot have any 50/50 cells
 // @TODO Immutable
-function generateMines(board) {
+export default function generateCells(board) {
+  const mines = [];
+
   for (let y = 0; y < board.height; y++) {
     const column = [];
 
@@ -18,8 +13,10 @@ function generateMines(board) {
       column.push(generateCell(board, x, y));
     }
 
-    board.rows.push(column);
+    mines.push(column);
   }
+
+  return mines;
 }
 
 function generateCell(board, x, y) {

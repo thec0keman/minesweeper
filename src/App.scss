@@ -133,41 +133,42 @@ $eight: rgb(90, 230, 210);
       }
     }
 
-    .throb {
+    .detonate {
       svg {
-        box-shadow: 0 0 9px 0 rgb(255, 0, 0);
-        transform: scale(1);
-        animation: pulse-black 2s infinite;
         border-radius: 15px;
+        animation: detonate 0.8s;
+
+        // Final state
+        color: rgba(34, 34, 34, 0.472);
+        box-shadow: 0 0 25px 5px rgb(0, 0, 0);
+        background-color: rgba(41, 40, 40, 0.671);
       }
     }
-
-
   }
 }
 
-@keyframes pulse-black {
+@keyframes detonate {
   0% {
     color: rgb(255, 0, 0);
-    box-shadow: 0 0 1px 1px rgb(255, 0, 0)
+    box-shadow: 0 0 1px 1px rgb(255, 0, 0);
+    background-color: rgb(255, 123, 0);
   }
 
-  35% {
-    box-shadow: 0 0 10px 5px rgb(255, 136, 0)
+  25% {
+    color: rgb(255, 51, 0);
+    box-shadow: 0 0 7px 3px rgb(255, 115, 0);
+    background-color: rgb(255, 102, 0);
   }
 
   60% {
-    color: rgba(224, 157, 2, 0.5);
-    box-shadow: 0 0 15px 5px rgb(224, 157, 2)
-  }
-
-  90% {
-    color: rgba(243, 228, 193, 0);
-    box-shadow: 0 0 35px 5px rgba(243, 228, 193, 0.301)
+    color: rgb(255, 157, 0);
+    box-shadow: 0 0 15px 5px rgb(255, 157, 0);
+    background-color: rgb(255, 179, 0);
   }
 
   100% {
-    color: rgba(255, 255, 255, 0);
-    box-shadow: 0 0 45px 5px rgba(255, 255, 255, 0)
+    color: rgba(34, 34, 34, 0.472);
+    box-shadow: 0 0 25px 5px rgb(0, 0, 0);
+    background-color: rgba(41, 40, 40, 0.671);
   }
 }

@@ -1,4 +1,13 @@
+import memoize from './memoize';
+
 class GameCell {
+  /**
+   * @param {GameBoard} board
+   * @param {Integer} id
+   * @param {Boolean} isMine
+   * @param {Integer} x
+   * @param {Integer} y
+   */
   constructor(board, id, isMine, x, y) {
     this.board = board;
     this.id = id;
@@ -7,20 +16,14 @@ class GameCell {
     this.y = y;
   }
 
+  /**
+   * @return {Integer}
+   */
+  @memoize
   get number() {
-    if (this._number) {
-      return this._number;
-    }
-
-    if (!this.isMine) {
-      this._number = this.board.
-        fetchSiblings(this).
-        filter(sibling => sibling.isMine).length;
-
-      return this._number;
-    } else {
-      return null;
-    }
+    return this.board.
+      fetchSiblings(this).
+      filter(sibling => sibling.isMine).length;
   }
 }
 

@@ -28,7 +28,7 @@ export default function Cell(props) {
 
   } else if (isExploded) {
     return (
-      <div className="cell throb">
+      <div className="cell detonate">
         <FontAwesomeIcon icon={explode}/>
       </div>
     )
