@@ -40,6 +40,7 @@
     "jest-environment-jsdom-fourteen": "0.1.0",
     "jest-resolve": "24.9.0",
     "jest-watch-typeahead": "0.4.0",
+    "memoize-decorator": "^1.0.2",
     "mini-css-extract-plugin": "0.8.0",
     "node-sass": "^4.13.0",
     "optimize-css-assets-webpack-plugin": "5.0.3",
@@ -89,8 +90,18 @@
   },
   "babel": {
     "plugins": [
-        ["@babel/plugin-proposal-decorators", { "legacy": true }],
-        ["@babel/plugin-proposal-class-properties", { "loose": true}]
+      [
+        "@babel/plugin-proposal-decorators",
+        {
+          "legacy": true
+        }
+      ],
+      [
+        "@babel/plugin-proposal-class-properties",
+        {
+          "loose": true
+        }
+      ]
     ],
     "presets": [
       "react-app"

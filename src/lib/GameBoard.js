@@ -1,4 +1,4 @@
-import memoize from './memoize';
+import memoize from 'memoize-decorator'
 import generateCells from '../lib/generate-cells';
 
 export default class GameBoard {
