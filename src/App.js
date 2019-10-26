@@ -1,24 +1,23 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import './App.scss';
+import Game from './components/Game';
+
+window.oncontextmenu = function ()
+{
+  return false;
+}
+
+// @TODO Difficulty selector
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <main>
+        {/* Hard */}
+        <Game width={50} height={30} density={250}/>
+        {/* Easy */}
+        {/* <Game width={10} height={10} density={10}/> */}
+      </main>
     </div>
   );
 }
