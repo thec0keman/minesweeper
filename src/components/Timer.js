@@ -19,13 +19,11 @@ export default function(props) {
 
   if (props.gameRunning || props.gameOver) {
     return (
-      <div className='timer_container'>
-        <div className='timer'>
-          {seconds}
-        </div>
+      <div className='timer'>
+        {seconds}
       </div>
     )
   } else {
-    return <div className='timer_container'/>
+    return <div className='timer-blank'/>
   }
 }

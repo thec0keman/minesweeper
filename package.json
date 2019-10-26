@@ -3,13 +3,16 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@babel/plugin-proposal-decorators": "",
     "@fortawesome/fontawesome-svg-core": "^1.2.25",
     "@fortawesome/free-solid-svg-icons": "^5.11.2",
     "@fortawesome/react-fontawesome": "^0.1.7",
+    "@testing-library/react": "",
     "node-sass": "^4.13.0",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
-    "react-scripts": "3.2.0"
+    "react-scripts": "3.2.0",
+    "react-select": "^3.0.8"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -30,6 +33,14 @@
       "last 1 chrome version",
       "last 1 firefox version",
       "last 1 safari version"
+    ]
+  },
+  "babel": {
+    "plugins": [
+      "@babel/plugin-proposal-decorators"
+    ],
+    "presets": [
+      "react-app"
     ]
   }
 }

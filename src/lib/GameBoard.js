@@ -1,8 +1,10 @@
+import memoize from './memoize';
+
 // @TODO Ensure first click is a zero
 // @TODO Ensure that you cannot have any impossible cells
 // @TODO Ensure that you cannot have any 50/50 cells
 
-class GameBoard {
+export default class GameBoard {
   rows = [];
 
   constructor(height, width, density) {
@@ -15,11 +17,11 @@ class GameBoard {
     return this.height * this.width;
   }
 
+  @memoize
   get totalMines() {
-    if (this._totalMiens)
-      return this._totalMines;
+    console.log('calculating total mines');
 
-    return this._totalMines = this.rows.reduce((count, row) => count + row.filter(cell => cell.isMine).length, 0)
+    return this.rows.reduce((count, row) => count + row.filter(cell => cell.isMine).length, 0)
   }
 
   // Do not follow a branching recursive strategy, since we want to make sure
@@ -82,5 +84,3 @@ function outOfBounds(y, x, height, width) {
          x > width - 1 ||
          y > height - 1;
 }
-
-export default GameBoard;

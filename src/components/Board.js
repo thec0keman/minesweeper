@@ -1,6 +1,7 @@
 import React from 'react';
 import Row from './Row';
 import Timer from './Timer';
+import Progress from './Progress';
 
 export default function Board(props) {
   const board = props.board;
@@ -8,13 +9,7 @@ export default function Board(props) {
 
   return (
     <div className='game'>
-      <button onClick={props.reset}>Start Over</button>
-      <div className='progress'>
-        Cells: {props.selectedCells.length} / {props.board.totalCells}
-        <br/>
-        Flags: {props.flaggedCells.length} / {props.board.totalMines}
-      </div>
-
+      <Progress {...props}/>
       <Timer gameRunning={props.gameRunning} gameOver={props.gameOver}/>
 
       <div className='board'>{rows}</div>

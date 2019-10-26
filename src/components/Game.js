@@ -2,7 +2,7 @@ import React from 'react';
 import Board from './Board';
 import generateBoard from '../lib/generate-board';
 
-class Game extends React.Component {
+export default class Game extends React.Component {
   constructor(props) {
     super(props);
 
@@ -103,15 +103,15 @@ class Game extends React.Component {
 
   render() {
     return (
-      <Board
-        board={this.state.board}
-        flagCell={this.flagCell}
-        clickCell={this.clickCell}
-        reset={this.reset}
-        {...this.state}
-      />
+      <section>
+        <button onClick={this.reset}>Start Over</button>
+        <Board
+          board={this.state.board}
+          flagCell={this.flagCell}
+          clickCell={this.clickCell}
+          {...this.state}
+        />
+      </section>
     )
   }
 }
-
-export default Game;

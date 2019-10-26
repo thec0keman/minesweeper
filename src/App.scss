@@ -7,40 +7,45 @@ $six: rgb(230, 80, 110);
 $seven: rgb(250, 240, 110);
 $eight: rgb(90, 230, 210);
 
-.App {
+.app {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
+.difficulty {
+  display: grid;
+  align-items: center;
+  justify-content: center;
+
+  &__selector {
+    width: 500px;
+    padding-top: 35vh
+  }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.game {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
 
-.App-link {
-  color: #09d3ac;
-}
+  .progress {
+    width: 200px;
+    border: 1px solid grey;
+    background-color: #e8e8e8;
 
-.board {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  height: 100vh;
-}
+    dl {
+      grid-template-columns: 1fr 5fr;
+      display: grid;
+      margin: 5px;
 
-.timer_container {
-  display: flex;
-  justify-content: center;
-  min-height: 50px;
+      dt {
+        font-style: italic;
+      }
+
+      dd {
+        font-size: 20px;
+      }
+    }
+  }
 
   .timer {
     margin: 10px;
@@ -51,85 +56,93 @@ $eight: rgb(90, 230, 210);
     background-color: #ad9c7c;
     color: #ffe875;
   }
-}
-.row {
-  display: flex;
-  flex-direction: row;
-}
-
-.cell {
-  display: flex;
-  flex-direction: column;
-  width: 16px;
-  height: 16px;
-  margin: 1px;
-  border: 1px solid rgb(228, 228, 228);
-
-  &.raised {
-    border: 1px solid rgb(121, 121, 121);
-    border-left: 1px solid #b3b3b3;
-    border-top: 1px solid rgb(233, 233, 233);
+  .timer-blank {
+    height: 47px;
   }
-  &.flag {
-    svg {
-      color: rgb(207, 31, 31);
-      font-size: 11px;
-      padding: 2px;
-      background-color: rgb(222, 240, 251);
+
+  .board {
+    .row {
+      display: flex;
+      flex-direction: row;
     }
-  }
 
-  &.bomb {
-    svg {
-      filter: drop-shadow(0px 0px 6px #fb0000);
-      color: #271706;
+    .cell {
+      display: flex;
+      flex-direction: column;
+      width: 16px;
+      height: 16px;
+      margin: 1px;
+      border: 1px solid rgb(228, 228, 228);
+
+      &.raised {
+        border: 1px solid rgb(121, 121, 121);
+        border-left: 1px solid #b3b3b3;
+        border-top: 1px solid rgb(233, 233, 233);
+      }
+      &.flag {
+        svg {
+          color: rgb(207, 31, 31);
+          font-size: 11px;
+          padding: 2px;
+          background-color: rgb(222, 240, 251);
+        }
+      }
+
+      &.bomb {
+        svg {
+          filter: drop-shadow(0px 0px 6px #fb0000);
+          color: #271706;
+        }
+      }
+
+      &.empty {
+        border: 1px solid rgb(77, 208, 248);
+        background-color: rgba(77, 208, 248, 0.356);
+      }
+      &.one {
+        font-weight: bold;
+        color: $one;
+      }
+      &.two {
+        font-weight: bold;
+        color: $two;
+      }
+      &.three {
+        font-weight: bold;
+        color: $three;
+      }
+      &.four {
+        font-weight: bold;
+        color: $four;
+      }
+      &.five {
+        font-weight: bold;
+        color: $five;
+      }
+      &.six {
+        font-weight: bold;
+        color: $six;
+      }
+      &.seven {
+        font-weight: bold;
+        color: $seven;
+      }
+      &.either {
+        font-weight: bold;
+        color: $eight;
+      }
     }
-  }
 
-  &.empty {
-    border: 1px solid rgb(77, 208, 248);
-    background-color: rgba(77, 208, 248, 0.356);
-  }
-  &.one {
-    font-weight: bold;
-    color: $one;
-  }
-  &.two {
-    font-weight: bold;
-    color: $two;
-  }
-  &.three {
-    font-weight: bold;
-    color: $three;
-  }
-  &.four {
-    font-weight: bold;
-    color: $four;
-  }
-  &.five {
-    font-weight: bold;
-    color: $five;
-  }
-  &.six {
-    font-weight: bold;
-    color: $six;
-  }
-  &.seven {
-    font-weight: bold;
-    color: $seven;
-  }
-  &.either {
-    font-weight: bold;
-    color: $eight;
-  }
-}
+    .throb {
+      svg {
+        box-shadow: 0 0 9px 0 rgb(255, 0, 0);
+        transform: scale(1);
+        animation: pulse-black 2s infinite;
+        border-radius: 15px;
+      }
+    }
 
-.throb {
-  svg {
-    box-shadow: 0 0 9px 0 rgb(255, 0, 0);
-    transform: scale(1);
-    animation: pulse-black 2s infinite;
-    border-radius: 15px;
+
   }
 }
 

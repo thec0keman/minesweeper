@@ -5,19 +5,9 @@ import {
   faFlag as flag,
   faBomb as bomb
 } from '@fortawesome/free-solid-svg-icons'
+import { colorMap } from '../lib/color-map'
 
-const colorMap = {
-  1: 'one',
-  2: 'two',
-  3: 'three',
-  4: 'four',
-  5: 'five',
-  6: 'six',
-  7: 'seven',
-  8: 'either'
-}
-
-function Cell(props) {
+export default function Cell(props) {
   const cell = props.cell;
   const isVisible = props.selectedCells.indexOf(cell) > -1;
   const isFlagged = props.flaggedCells.indexOf(cell) > -1;
@@ -65,5 +55,3 @@ function Cell(props) {
     )
   }
 }
-
-export default Cell;
