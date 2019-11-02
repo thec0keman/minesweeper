@@ -3,14 +3,17 @@ import Row from './Row';
 import Timer from './Timer';
 import Progress from './Progress';
 
-export default function Board(props) {
-  const board = props.board;
-  const rows = board.rows.map((row, y) => (<Row row={row} data-y={y} key={y} {...props}/>));
+export default function Board({ board, gameRunning, gameOver, gameWon, selectedCells, flaggedCells }) {
+  const rows = board.
+    rows.
+    map((row, y) => (
+      <Row row={row} data-y={y} key={y} />
+    ));
 
   return (
     <div className='game'>
-      <Progress {...props}/>
-      <Timer gameRunning={props.gameRunning} gameOver={props.gameOver}/>
+      <Progress selectedCells={selectedCells} flaggedCells={flaggedCells} gameWon={gameWon} gameOver={gameOver} board={board}/>
+      <Timer gameRunning={gameRunning} gameOver={gameOver} gameWon={gameWon}/>
 
       <div className='board'>{rows}</div>
     </div>

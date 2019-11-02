@@ -1,25 +1,27 @@
 import React, { useState, useEffect } from 'react';
 
-export default function(props) {
+export default function({ gameRunning, gameOver, gameWon }) {
   const [seconds, setSeconds] = useState(1);
 
   useEffect(() => {
     let interval = null;
 
-    if (props.gameRunning) {
+    if (gameRunning) {
       interval = setInterval(() => {
         setSeconds(seconds => seconds + 1);
       }, 1000);
-    } else if (props.gameOver) {
+    } else if (gameOver) {
       clearInterval(interval)
     }
 
     return () => clearInterval(interval);
-  }, [seconds, props.gameRunning, props.gameOver]);
+  }, [seconds, gameRunning, gameOver]);
 
-  if (props.gameRunning || props.gameOver) {
+  const classes = gameWon ? 'timer won' : 'timer';
+
+  if (gameRunning || gameOver) {
     return (
-      <div className='timer'>
+      <div className={classes}>
         {seconds}
       </div>
     )

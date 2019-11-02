@@ -1,5 +1,5 @@
 import React from 'react';
-import Cell from './Cell';
+import Cell from '../containers/cell';
 
 export default function Row(props) {
   const cells = props.row.map((cell, x) => {
@@ -8,7 +8,6 @@ export default function Row(props) {
         data-column={x}
         key={cell.id}
         cell={cell}
-        {...props}
       />
     );
   });

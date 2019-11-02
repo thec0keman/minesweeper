@@ -1,8 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './App.scss';
-import Game from './components/Game';
-import Difficulty from './components/Difficulty';
-import { difficulties } from './lib/difficulties';
+import Game from './containers/game';
 
 window.oncontextmenu = function ()
 {
@@ -10,20 +8,11 @@ window.oncontextmenu = function ()
 }
 
 function App() {
-  const [difficulty, setDifficulty] = useState();
-
-  if (difficulty) {
-    return (
-      <main className='app'>
-        <button onClick={() => setDifficulty() }>Change Difficulty</button>
-        <Game {...difficulties[difficulty]} />
-      </main>
-    );
-  } else {
-    return (
-      <Difficulty setDifficulty={setDifficulty} difficulty={difficulty}/>
-    )
-  }
+  return (
+    <main className='app'>
+      <Game/>
+    </main>
+  );
 }
 
 export default App;

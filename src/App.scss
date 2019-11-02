@@ -55,6 +55,11 @@ $eight: rgb(90, 230, 210);
     text-align: center;
     background-color: #ad9c7c;
     color: #ffe875;
+
+    &.won {
+      background-color: #67a767;
+      border-color: #9ff55e;
+    }
   }
   .timer-blank {
     height: 47px;

@@ -8,12 +8,12 @@ function uppercase(str) {
   return `${ str[0].toUpperCase() }${ str.slice(1) }`;
 }
 
-export default function Difficulty(props) {
+export default function Difficulty({ difficulty, setDifficulty }) {
   return (
     <div className='difficulty'>
-      <div className='difficulty__selector'>
+      <div className='difficulty__selector' style={{textAlign: 'left'}}>
         <h3>Select Difficulty</h3>
-        <Select options={OPTIONS} value={props.difficulty} onChange={(selection) => props.setDifficulty(selection.value)}/>
+        <Select options={OPTIONS} onChange={setDifficulty}/>
       </div>
     </div>
   )

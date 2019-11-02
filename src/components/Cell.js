@@ -7,22 +7,17 @@ import {
 } from '@fortawesome/free-solid-svg-icons'
 import { colorMap } from '../lib/color-map'
 
-export default function Cell(props) {
-  const cell = props.cell;
-  const isVisible = props.selectedCells.indexOf(cell) > -1;
-  const isFlagged = props.flaggedCells.indexOf(cell) > -1;
-  const isExploded = props.exploded.indexOf(cell) > -1;
-
+export default function Cell({ cell, isFlagged, isVisible, isExploded, flagCell, clickCell }) {
   if (isFlagged) {
     return (
       <div className="cell raised flag">
-        <FontAwesomeIcon icon={flag} onContextMenu={(e) => { props.flagCell(e, cell) }}/>
+        <FontAwesomeIcon icon={flag} onContextMenu={(e) => { flagCell(e, cell) }}/>
       </div>
     )
 
   } else if (!isVisible) {
     return (
-      <div className="cell raised" onContextMenu={(e) => { props.flagCell(e, cell) }} onClick={(e) => { props.clickCell(e, cell) }}>
+      <div className="cell raised" onContextMenu={(e) => { flagCell(e, cell) }} onClick={(e) => { clickCell(e, cell) }}>
       </div>
     )
 
@@ -45,7 +40,7 @@ export default function Cell(props) {
 
     return (
       <div className={ 'cell ' + colorClass }>
-      {cell.number}
+        {cell.number}
       </div>
     )
 
