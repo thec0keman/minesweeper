@@ -21,9 +21,13 @@ class GameCell {
    */
   @memoize
   get number() {
-    return this.board.
-      fetchSiblings(this).
-      filter(sibling => sibling.isMine).length;
+    if (this.isMine) {
+      return '!'
+    } else {
+      return this.board.
+        fetchSiblings(this).
+        filter(sibling => sibling.isMine).length;
+    }
   }
 }
 

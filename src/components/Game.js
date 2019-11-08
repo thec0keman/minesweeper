@@ -15,7 +15,7 @@ export default class Game extends React.Component {
   }
 
   componentWillUnmount() {
-    this.detonator.stop();
+    this.detonator && this.detonator.stop();
   }
 
   render() {

@@ -6,5 +6,5 @@ export const colorMap = {
   5: 'five',
   6: 'six',
   7: 'seven',
-  8: 'either'
+  8: 'eight'
 };

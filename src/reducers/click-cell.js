@@ -4,9 +4,8 @@ function clearCell(board, selectedCells, cell) {
     ...selectedCells,
     cell
   ];
-  const chainedCells = board.fetchChainedCells([cell], newVisible);
 
-  return chainedCells;
+  return board.fetchChainedCells([cell], newVisible);
 }
 
 export default function clickCell(cell, state) {

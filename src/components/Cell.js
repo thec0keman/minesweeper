@@ -10,27 +10,27 @@ import { colorMap } from '../lib/color-map'
 export default function Cell({ cell, isFlagged, isVisible, isExploded, flagCell, clickCell }) {
   if (isFlagged) {
     return (
-      <div className="cell raised flag">
-        <FontAwesomeIcon icon={flag} onContextMenu={(e) => { flagCell(e, cell) }}/>
+      <div data-test-flagged className="cell raised flag"  onContextMenu={(e) => { flagCell(e, cell) }}>
+        <FontAwesomeIcon icon={flag}/>
       </div>
     )
 
   } else if (!isVisible) {
     return (
-      <div className="cell raised" onContextMenu={(e) => { flagCell(e, cell) }} onClick={(e) => { clickCell(e, cell) }}>
+      <div data-test-hidden className="cell raised" onContextMenu={(e) => { flagCell(e, cell) }} onClick={(e) => { clickCell(e, cell) }}>
       </div>
     )
 
   } else if (isExploded) {
     return (
-      <div className="cell detonate">
+      <div data-test-detonated className="cell detonate">
         <FontAwesomeIcon icon={explode}/>
       </div>
     )
 
   } else if (cell.isMine) {
     return (
-      <div className="cell bomb">
+      <div data-test-visible-mine className="cell bomb">
         <FontAwesomeIcon icon={bomb}/>
       </div>
     )
@@ -39,14 +39,14 @@ export default function Cell({ cell, isFlagged, isVisible, isExploded, flagCell,
     const colorClass = colorMap[cell.number];
 
     return (
-      <div className={ 'cell ' + colorClass }>
+      <div data-test-visible className={ 'cell ' + colorClass }>
         {cell.number}
       </div>
     )
 
   } else {
     return (
-      <div className="cell empty"/>
+      <div data-test-empty className="cell empty"/>
     )
   }
 }

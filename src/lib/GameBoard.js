@@ -7,7 +7,7 @@ export default class GameBoard {
    * @param [Integer] width
    * @param [Integer] density
    */
-  constructor(height, width, density) {
+  constructor(height = 0, width = 0, density = 1) {
     this.height = height;
     this.width = width;
     this.density = density;
@@ -87,9 +87,17 @@ export default class GameBoard {
   fetchSiblings(cell) {
     let results = [];
 
-    for (let y2 = cell.y - 1; y2 <= cell.y + 1; y2++) {
-      for (let x2 = cell.x - 1; x2 <= cell.x + 1; x2++) {
-        if (!outOfBounds(y2, x2, this.height, this.width) && !(y2 === cell.y && x2 === cell.x)) {
+    const { width:w, height:h } = this;
+    const { x, y } = cell;
+
+    const top =    y - 1 < 0     ? 0     : y - 1;
+    const bottom = y + 1 > h - 1 ? h - 1 : y + 1;
+    const left =   x - 1 < 0     ? 0     : x - 1;
+    const right =  x + 1 > w - 1 ? w - 1 : x + 1;
+
+    for (let y2 = top; y2 <= bottom; y2++) {
+      for (let x2 = left; x2 <= right; x2++) {
+        if (y2 !== y || x2 !== x) {
           results.push(this.rows[y2][x2]);
         }
       }
@@ -97,19 +105,4 @@ export default class GameBoard {
 
     return results;
   }
-}
-
-/**
- *
- * @param {Integer} y
- * @param {Integer} x
- * @param {Integer} height
- * @param {Integer} width
- * @return {Boolean}
- */
-function outOfBounds(y, x, height, width) {
-  return x < 0 ||
-    y < 0 ||
-    x > width - 1 ||
-    y > height - 1;
 }
