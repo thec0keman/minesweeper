@@ -8,7 +8,14 @@ import {
 import { colorMap } from '../lib/color-map'
 
 export default function Cell({ cell, isFlagged, isVisible, isExploded, flagCell, clickCell }) {
-  if (isFlagged) {
+  if (isExploded) {
+    return (
+      <div data-test-detonated className="cell detonate">
+        <FontAwesomeIcon icon={explode}/>
+      </div>
+    )
+
+  } else if (isFlagged) {
     return (
       <div data-test-flagged className="cell raised flag"  onContextMenu={(e) => { flagCell(e, cell) }}>
         <FontAwesomeIcon icon={flag}/>
@@ -18,13 +25,6 @@ export default function Cell({ cell, isFlagged, isVisible, isExploded, flagCell,
   } else if (!isVisible) {
     return (
       <div data-test-hidden className="cell raised" onContextMenu={(e) => { flagCell(e, cell) }} onClick={(e) => { clickCell(e, cell) }}>
-      </div>
-    )
-
-  } else if (isExploded) {
-    return (
-      <div data-test-detonated className="cell detonate">
-        <FontAwesomeIcon icon={explode}/>
       </div>
     )
 

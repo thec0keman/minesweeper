@@ -3,7 +3,7 @@ import './App.scss';
 import Game from './containers/game';
 import Difficulty from './containers/difficulty';
 import {
-  BrowserRouter as Router,
+  HashRouter as Router,
   Switch,
   Route,
 } from "react-router-dom";

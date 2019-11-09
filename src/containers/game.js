@@ -15,6 +15,7 @@ const mapDispatchToProps = (dispatch) => ({
   setDifficultyFromUrl: (value) => {
     if (validDifficulties.includes(value)) {
       dispatch(setDifficulty(value));
+      return true;
     }
   }
 })

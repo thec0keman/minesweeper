@@ -1,18 +1,23 @@
 import Board from '../containers/board';
 import Detonator from '../containers/detonator';
 import React from 'react';
+import { useParams } from 'react-router-dom';
 
 export default function Game({ resetGame, difficulty, history, setDifficultyFromUrl }) {
-  if (!difficulty) {
-    const value = history.location.pathname.replace('/', '');
+  const goHome = () => history.push('/');
+  const { difficulty: difficultyFromUrl } = useParams();
 
-    setDifficultyFromUrl(value);
-    return <div>Sorry, something went wrong</div>;
+  if (!difficulty) {
+    if (!setDifficultyFromUrl(difficultyFromUrl)) {
+      goHome();
+    }
+
+    return (null);
   }
 
   return (
     <section>
-      <button onClick={() => history.push('/')}>Change Difficulty</button>
+      <button onClick={goHome}>Change Difficulty</button>
       <button onClick={resetGame}>Start Over</button>
       <Board/>
       <Detonator/>
