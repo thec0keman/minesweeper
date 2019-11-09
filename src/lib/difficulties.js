@@ -20,3 +20,5 @@ export const difficulties = {
     density: 350
   }
 };
+
+export const validDifficulties = Object.keys(difficulties);

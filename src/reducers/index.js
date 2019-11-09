@@ -14,8 +14,13 @@ function stateFilter(state, { type, ...action }) {
   } = state;
 
   if (RESET_GAME_ACTIONS.includes(type)) {
-    const difficulty = action.clearDifficutly === true ? null : action.difficulty || state.difficulty;
+    const difficulty = action.difficulty || state.difficulty;
     const gameParams = difficulties[difficulty];
+
+    if (!difficulty || !gameParams) {
+      return state;
+    }
+
     const board = difficulty ? new GameBoard(gameParams.height, gameParams.width, gameParams.density) : null;
 
     return {
@@ -33,7 +38,6 @@ function stateFilter(state, { type, ...action }) {
   } else if (type === 'CHAIN_REACTION') {
     return {
       ...state,
-      detonate: false,
       exploded: [
         ...state.exploded,
         action.cell

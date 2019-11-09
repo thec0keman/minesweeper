@@ -49,12 +49,12 @@ export default class GameBoard {
 
     if (cell.number === 0) {
       // Grab all available items around this one
-      const siblings = this.fetchSiblings(cell).
-        filter(sibling => {
+      const siblings = this.fetchSiblings(cell)
+        .filter(sibling => {
           return !sibling.isMine &&
             sibling.number >= 0 &&
             currentVisible.indexOf(sibling) === -1;
-        })
+        });
 
       const newVisible = [
         ...currentVisible,

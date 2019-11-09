@@ -2,7 +2,11 @@ import React from 'react';
 import Select from 'react-select';
 import { difficulties } from '../lib/difficulties';
 
-const OPTIONS = Object.keys(difficulties).map((key) => ({ value: key, label: uppercase(key) }));
+const OPTIONS = Object.keys(difficulties)
+  .map((key) => ({
+    value: key,
+    label: uppercase(key)
+  }));
 
 function uppercase(str) {
   return `${ str[0].toUpperCase() }${ str.slice(1) }`;

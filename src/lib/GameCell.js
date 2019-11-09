@@ -24,9 +24,9 @@ class GameCell {
     if (this.isMine) {
       return '!'
     } else {
-      return this.board.
-        fetchSiblings(this).
-        filter(sibling => sibling.isMine).length;
+      return this.board
+        .fetchSiblings(this)
+        .filter(sibling => sibling.isMine).length;
     }
   }
 }

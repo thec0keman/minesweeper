@@ -12,10 +12,9 @@ export function flagCell(cell) {
   };
 }
 
-export function resetGame(clearDifficutly = false) {
+export function resetGame() {
   return {
-    type: 'RESET_GAME',
-    clearDifficutly
+    type: 'RESET_GAME'
   }
 }
 

@@ -2,17 +2,7 @@ import { connect } from 'react-redux'
 import Cell from '../components/Cell'
 import { clickCell, flagCell } from '../actions'
 
-const mapStateToProps = (state, ownProps) => {
-  const {
-    selectedCells,
-    flaggedCells,
-    exploded,
-    gameOver
-  } = state;
-  const {
-    cell
-  } = ownProps;
-
+const mapStateToProps = ({ selectedCells, flaggedCells, exploded, gameOver }, { cell }) => {
   return {
     isVisible: gameOver || selectedCells.includes(cell),
     isFlagged: flaggedCells.includes(cell),
@@ -20,12 +10,13 @@ const mapStateToProps = (state, ownProps) => {
   }
 }
 
-const mapDispatchToProps = (dispatch, ownProps) => ({
+const mapDispatchToProps = (dispatch) => ({
   flagCell: (e, cell) => {
     e.preventDefault();
 
     return dispatch(flagCell(cell));
   },
+
   clickCell: (e, cell) => {
     e.preventDefault();
 

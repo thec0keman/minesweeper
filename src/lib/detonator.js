@@ -7,15 +7,13 @@ export default class Detonator {
     this.mines = mines;
   }
 
-  start(callback) {
+  start(mine, callback) {
     this.running = true;
     this.callback = callback;
-    this._explode(this.mines);
+    this._trigger(this.mines, this.mines.indexOf(mine));
   }
 
-  _explode(mines) {
-    const index = Math.floor(Math.random() * mines.length);
-    const time = Math.random() * MINE_SPEED;
+  _trigger(mines, index) {
     const mine = mines[index];
     const remaining = arrWithout(mines, index);
 
@@ -24,9 +22,11 @@ export default class Detonator {
     }
 
     if (remaining.length > 0 && this.running) {
+      const nextMineTime = Math.random() * MINE_SPEED;
+
       setTimeout(() => {
-        this._explode(remaining);
-      }, time)
+        this._trigger(remaining, Math.floor(Math.random() * remaining.length));
+      }, nextMineTime)
     }
   }
 

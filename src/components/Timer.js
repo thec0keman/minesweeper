@@ -4,18 +4,18 @@ export default function({ gameRunning, gameOver, gameWon }) {
   const [seconds, setSeconds] = useState(1);
 
   useEffect(() => {
+    // Use `setInterval` so that if this component tears down mid-tick, we can stop
+    // the next tick.
     let interval = null;
 
     if (gameRunning) {
       interval = setInterval(() => {
         setSeconds(seconds => seconds + 1);
       }, 1000);
-    } else if (gameOver) {
-      clearInterval(interval)
     }
 
     return () => clearInterval(interval);
-  }, [seconds, gameRunning, gameOver]);
+  });
 
   const classes = gameWon ? 'timer won' : 'timer';
 

@@ -4,9 +4,9 @@ import Timer from './Timer';
 import Progress from './Progress';
 
 export default function Board({ board, gameRunning, gameOver, gameWon, selectedCells, flaggedCells }) {
-  const rows = board.
-    rows.
-    map((row, y) => (
+  const rows = board
+    .rows
+    .map((row, y) => (
       <Row row={row} data-y={y} key={y} />
     ));
 
