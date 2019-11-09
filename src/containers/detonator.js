@@ -2,9 +2,9 @@ import { connect } from 'react-redux'
 import Detonator from '../components/Detonator'
 import { chainReaction } from '../actions';
 
-const mapStateToProps = ({ board, detonate }) => ({
+const mapStateToProps = ({ board, clickedMine }) => ({
   board,
-  detonate,
+  clickedMine,
 });
 
 const mapDispatchToProps = (dispatch) => ({

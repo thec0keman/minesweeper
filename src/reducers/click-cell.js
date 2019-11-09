@@ -17,7 +17,7 @@ export default function clickCell(cell, state) {
       gameRunning: false,
       gameOver: true,
       gameWon: false,
-      detonate: cell // Flag this cell as about to detonate.  The `Game` component will handle the animation
+      clickedMine: cell // Flag this cell as about to detonate.  The `Game` component will handle the animation
     };
 
   } else if (!selectedCells.includes(cell)) {

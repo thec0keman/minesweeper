@@ -31,6 +31,7 @@ function stateFilter(state, { type, ...action }) {
       selectedCells: [],
       flaggedCells: [],
       exploded: [],
+      clickedMine: null,
       difficulty,
       board
     };
