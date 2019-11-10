@@ -1,13 +1,15 @@
-import GameCell from '../lib/GameCell';
-
 export function getCoordinates(siblings) {
   return  siblings.map(sibling => [sibling.x, sibling.y]);
 }
 
-export function rowsIntoRows(board, rows) {
+export function rowsIntoRows(rows) {
   return rows.map((row, y) => {
     return Array.from(row).map((value, x) => {
-      return new GameCell(board, null, value === '.', x, y);
+      return {
+        x,
+        y,
+        isMine: value === '.'
+      };
     });
   });
 }

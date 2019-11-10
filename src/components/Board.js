@@ -10,12 +10,21 @@ export default function Board({ board, gameRunning, gameOver, gameWon, selectedC
       <Row row={row} data-y={y} key={y} />
     ));
 
+  let message;
+
+  if (gameOver && gameWon) {
+    message = 'Congratulations, you win!';
+  } else if (gameOver) {
+    message = 'Sorry, please try again :(';
+  }
+
   return (
     <div className='game'>
-      <Progress selectedCells={selectedCells} flaggedCells={flaggedCells} gameWon={gameWon} gameOver={gameOver} board={board}/>
+      <Progress selectedCells={selectedCells} flaggedCells={flaggedCells} board={board}/>
       <Timer gameRunning={gameRunning} gameOver={gameOver} gameWon={gameWon}/>
 
       <div className='board'>{rows}</div>
+      <p>{message}</p>
     </div>
   )
 }

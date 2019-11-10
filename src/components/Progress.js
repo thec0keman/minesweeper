@@ -1,14 +1,6 @@
 import React from 'react';
 
-export default function Progress({ selectedCells, flaggedCells, board, gameWon, gameOver }) {
-  let message;
-
-  if (gameOver && gameWon) {
-    message = <div>Congratulations, you win!</div>
-  } else if (gameOver) {
-    message = <div>Sorry, please try again :(</div>
-  }
-
+export default function Progress({ selectedCells, flaggedCells, board }) {
   return (
     <div className='progress'>
       <dl>
@@ -19,7 +11,6 @@ export default function Progress({ selectedCells, flaggedCells, board, gameWon, 
         <dt>Flags</dt>
         <dd>{flaggedCells.length} / {board.totalMines}</dd>
       </dl>
-      {message}
     </div>
   )
 }

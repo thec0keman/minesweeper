@@ -2,10 +2,18 @@ import { useEffect, useState } from 'react';
 
 // Too low and the browser will choke on harder difficulties
 // Too high and detonation will take forever
-const MINE_SPEED = 200;
+// const MINE_SPEED = 190;
+// const MINE_SPEED = 90;
+// const MINE_SPEED = 20;
+const MINE_SPEED = {
+  easy: 190,
+  medium: 90,
+  hard: 20,
+  insane: 5
+};
 
 export default function({ board, clickedMine, chainReaction }) {
-  const { mines } = board;
+  const { mines, difficulty } = board;
   const [remaining, setRemaining] = useState([]);
 
   // This effect triggers the detonation.
@@ -27,7 +35,7 @@ export default function({ board, clickedMine, chainReaction }) {
 
     if (nextGroup.length > 0) {
       let interval;
-      const nextMineTime = Math.random() * MINE_SPEED;
+      const nextMineTime = Math.random() * MINE_SPEED[difficulty] // / mines.length;
 
       interval = setInterval(() => {
         setRemaining(nextGroup);

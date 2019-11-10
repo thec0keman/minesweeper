@@ -1,3 +1,4 @@
+import { fetchChainedCells } from '../lib/GameBoard';
 
 function clearCell(board, selectedCells, cell) {
   const newVisible = [
@@ -5,7 +6,7 @@ function clearCell(board, selectedCells, cell) {
     cell
   ];
 
-  return board.fetchChainedCells([cell], newVisible);
+  return fetchChainedCells(board, [cell], newVisible);
 }
 
 export default function clickCell(cell, state) {

@@ -1,4 +1,4 @@
-import GameBoard from '../lib/GameBoard';
+import { generateBoard } from '../lib/GameBoard';
 import { difficulties } from '../lib/difficulties';
 import clickCell from './click-cell';
 import flagCell from './flag-cell';
@@ -21,7 +21,7 @@ function stateFilter(state, { type, ...action }) {
       return state;
     }
 
-    const board = difficulty ? new GameBoard(gameParams.height, gameParams.width, gameParams.density) : null;
+    const board = difficulty ? generateBoard(gameParams.height, gameParams.width, gameParams.density, difficulty) : null;
 
     return {
       ...state,

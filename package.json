@@ -5,8 +5,6 @@
   "homepage": "http://thec0keman.github.io/minesweeper",
   "dependencies": {
     "@babel/core": "7.6.0",
-    "@babel/plugin-proposal-class-properties": "",
-    "@babel/plugin-proposal-decorators": "",
     "@fortawesome/fontawesome-svg-core": "^1.2.25",
     "@fortawesome/free-solid-svg-icons": "^5.11.2",
     "@fortawesome/react-fontawesome": "^0.1.7",
@@ -43,7 +41,6 @@
     "jest-resolve": "24.9.0",
     "jest-watch-typeahead": "0.4.0",
     "lodash-es": "^4.17.15",
-    "memoize-decorator": "^1.0.2",
     "mini-css-extract-plugin": "0.8.0",
     "node-sass": "^4.13.0",
     "optimize-css-assets-webpack-plugin": "5.0.3",
@@ -101,18 +98,6 @@
   },
   "babel": {
     "plugins": [
-      [
-        "@babel/plugin-proposal-decorators",
-        {
-          "legacy": true
-        }
-      ],
-      [
-        "@babel/plugin-proposal-class-properties",
-        {
-          "loose": true
-        }
-      ]
     ],
     "presets": [
       "react-app"
